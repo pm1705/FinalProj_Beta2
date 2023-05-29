@@ -1,0 +1,617 @@
+@startuml
+
+title __FINALPROJ_BETA2's Class Diagram__\n
+
+  namespace com.example.finalproj_beta2 {
+    abstract class com.example.finalproj_beta2.Base_object {
+        - active : Boolean
+        - gmail : String
+        - name : String
+        - school : String
+        + Base_object()
+        + getActive()
+        + getGmail()
+        + getName()
+        + getSchool()
+        + setActive()
+        + setGmail()
+        + setName()
+        + setSchool()
+    }
+  }
+  
+
+  namespace com.example.finalproj_beta2 {
+    class com.example.finalproj_beta2.CostumeAdapter {
+        ~ context : Context
+        ~ copies : ArrayList<String>
+        ~ due_dates : ArrayList<String>
+        ~ inflater : LayoutInflater
+        ~ nameList : ArrayList<String>
+        ~ settings : ArrayList<String>
+        ~ symbols : ArrayList<String>
+        ~ urgent : ArrayList<Boolean>
+        + CostumeAdapter()
+        + getCount()
+        + getItem()
+        + getItemId()
+        + getView()
+    }
+  }
+  
+
+  namespace com.example.finalproj_beta2 {
+    class com.example.finalproj_beta2.CostumeAdapterUser {
+        ~ cityList : ArrayList<String>
+        ~ context : Context
+        ~ inflter : LayoutInflater
+        ~ symbols : ArrayList<String>
+        + CostumeAdapterUser()
+        + getCount()
+        + getItem()
+        + getItemId()
+        + getView()
+    }
+  }
+  
+
+  namespace com.example.finalproj_beta2 {
+    class com.example.finalproj_beta2.DB_refs {
+        {static} + FBDB : FirebaseDatabase
+        {static} + refAuth : FirebaseAuth
+        {static} + refSchools : DatabaseReference
+        {static} + storageReference : StorageReference
+    }
+  }
+  
+
+  namespace com.example.finalproj_beta2 {
+    class com.example.finalproj_beta2.Request {
+        {static} + APPROVED : String
+        {static} + COLORFUL : String
+        {static} + COPIES : String
+        {static} + DATE_PRINTED : String
+        {static} + DATE_REQUESTED : String
+        {static} + DOUBLE_SIDED : String
+        {static} + FILE_ID : String
+        {static} + RELEVANT : String
+        {static} + USER_ID : String
+        {static} + USER_NAME : String
+        {static} + VERTICAL : String
+        ~ approved : boolean
+        ~ colorful : boolean
+        ~ copies : int
+        ~ date_printed : String
+        ~ date_requested : String
+        ~ double_sided : boolean
+        ~ file_id : String
+        ~ relevant : boolean
+        ~ user_id : String
+        ~ user_name : String
+        ~ vertical : boolean
+        + Request()
+        + getCopies()
+        + getDate_printed()
+        + getDate_requested()
+        + getFile_id()
+        + getUser_id()
+        + getUser_name()
+        + isApproved()
+        + isColorful()
+        + isDouble_sided()
+        + isRelevant()
+        + isVertical()
+        + setApproved()
+        + setColorful()
+        + setCopies()
+        + setDate_printed()
+        + setDate_requested()
+        + setDouble_sided()
+        + setFile_id()
+        + setRelevant()
+        + setUser_id()
+        + setUser_name()
+        + setVertical()
+    }
+  }
+  
+
+  namespace com.example.finalproj_beta2 {
+    class com.example.finalproj_beta2.Student {
+        {static} + ACTIVE : String
+        {static} + CREDITS : String
+        {static} + GMAIL : String
+        {static} + NAME : String
+        {static} + SCHOOL : String
+        ~ credits : int
+        + Student()
+        + getCredits()
+        + setCredits()
+    }
+  }
+  
+
+  namespace com.example.finalproj_beta2 {
+    class com.example.finalproj_beta2.Student_print {
+        {static} + COLORFUL : String
+        {static} + COPIES : String
+        {static} + COST : String
+        {static} + DATE_REQUESTED : String
+        {static} + DOUBLE_SIDED : String
+        {static} + FILE_ID : String
+        {static} + PRINTED : String
+        {static} + USER_ID : String
+        {static} + USER_NAME : String
+        {static} + VERTICAL : String
+        ~ colorful : boolean
+        ~ copies : int
+        ~ cost : String
+        ~ date_requested : String
+        ~ double_sided : boolean
+        ~ file_id : String
+        ~ printed : boolean
+        ~ user_id : String
+        ~ user_name : String
+        ~ vertical : boolean
+        + Student_print()
+        {static} + getCOLORFUL()
+        {static} + getCOPIES()
+        + getCopies()
+        + getCost()
+        {static} + getDateRequested()
+        + getDate_requested()
+        {static} + getDoubleSided()
+        {static} + getFileId()
+        + getFile_id()
+        {static} + getUserId()
+        {static} + getUserName()
+        + getUser_id()
+        + getUser_name()
+        {static} + getVERTICAL()
+        + isColorful()
+        + isDouble_sided()
+        + isPrinted()
+        + isVertical()
+        + setColorful()
+        + setCopies()
+        + setCost()
+        + setDate_requested()
+        + setDouble_sided()
+        + setFile_id()
+        + setPrinted()
+        + setUser_id()
+        + setUser_name()
+        + setVertical()
+    }
+  }
+  
+
+  namespace com.example.finalproj_beta2 {
+    class com.example.finalproj_beta2.Teacher {
+        {static} + ACTIVE : String
+        {static} + GMAIL : String
+        {static} + LEVEL : String
+        {static} + NAME : String
+        {static} + SCHOOL : String
+        - level : int
+        + Teacher()
+        + getLevel()
+        + setLevel()
+    }
+  }
+  
+
+  namespace com.example.finalproj_beta2 {
+    class com.example.finalproj_beta2.create_school {
+        ~ email : String
+        ~ get_school_id : String
+        ~ last_school_id : String
+        ~ name : String
+        ~ new_school_id : String
+        ~ school_name : EditText
+        ~ secret_code : String
+        ~ settings : SharedPreferences
+        ~ uid : String
+        ~ url : String
+        + create_school()
+        + generate_school_id()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.example.finalproj_beta2 {
+    class com.example.finalproj_beta2.first_signin {
+        ~ get_school_id : String
+        ~ gmail : String
+        ~ google_auth_signin : Intent
+        ~ mAuth : FirebaseAuth
+        ~ name : String
+        ~ name_et : EditText
+        ~ school : String
+        ~ settings : SharedPreferences
+        ~ uid : String
+        ~ user : FirebaseUser
+        + student_next()
+        + teacher_next()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.example.finalproj_beta2 {
+    class com.example.finalproj_beta2.home_screen {
+        ~ copies : ArrayList<String>
+        ~ currentActivity : Activity
+        ~ current_millis : Long
+        ~ displays : ArrayList<String>
+        ~ due_dates : ArrayList<String>
+        ~ get_credits : String
+        ~ get_email : String
+        ~ get_name : String
+        ~ get_school_id : String
+        ~ get_school_name : String
+        ~ lvl1 : String
+        ~ mAuth : FirebaseAuth
+        ~ mGoogleSignInClient : GoogleSignInClient
+        ~ menu_button : ImageButton
+        ~ pending_num : TextView
+        ~ pending_or_credits : TextView
+        ~ pending_requests : ArrayList<String>
+        ~ pending_requests_lv : ListView
+        ~ progressDialog : ProgressDialog
+        ~ requestListener : ValueEventListener
+        ~ settings : SharedPreferences
+        ~ settings_list : ArrayList<String>
+        ~ teacher_or_student : String
+        ~ temp_setting_string : String
+        ~ uid : String
+        ~ urgent : ArrayList<Boolean>
+        ~ uris : ArrayList<String>
+        ~ user : FirebaseUser
+        ~ welcome_tv : TextView
+        {static} + getDaysBetween()
+        + is_relevant()
+        + menu_show()
+        + my_profile()
+        + onContextItemSelected()
+        + onCreateContextMenu()
+        + onItemClick()
+        + onPause()
+        + onResume()
+        + request_print()
+        + sign_out_real()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.example.finalproj_beta2 {
+    class com.example.finalproj_beta2.main_activity {
+        ~ data_student : DataSnapshot
+        ~ data_teacher : DataSnapshot
+        ~ emailTv : TextView
+        ~ exists_student : boolean
+        ~ exists_teacher : boolean
+        ~ get_school_id : String
+        ~ mAuth : FirebaseAuth
+        ~ mGoogleSignInClient : GoogleSignInClient
+        ~ progressDialog : ProgressDialog
+        ~ school_id : EditText
+        ~ school_ids : ArrayList<String>
+        ~ second_step : LinearLayout
+        ~ settings : SharedPreferences
+        ~ signed_in : boolean
+        ~ signin : SignInButton
+        ~ uid : String
+        ~ user : FirebaseUser
+        {static} - RC_SIGN_IN : int
+        + create_school()
+        + log_in()
+        + onActivityResult()
+        + onDestroy()
+        + onStart()
+        + sign_out()
+        + updateUI()
+        # onCreate()
+        - handleSignInResult()
+        - signIn()
+    }
+  }
+  
+
+  namespace com.example.finalproj_beta2 {
+    class com.example.finalproj_beta2.myViewPagerAdapter {
+        + createFragment()
+        + getItemCount()
+        + myViewPagerAdapter()
+    }
+  }
+  
+
+  namespace com.example.finalproj_beta2 {
+    class com.example.finalproj_beta2.my_profile {
+        ~ get_email : String
+        ~ get_name : String
+        ~ get_school_id : String
+        ~ get_school_name : String
+        ~ get_school_secret : String
+        ~ get_url : String
+        ~ lvl : String
+        ~ menu_button : ImageView
+        ~ my_school : Button
+        ~ pfp : ImageView
+        ~ progressDialog : ProgressDialog
+        ~ tv_email : TextView
+        ~ tv_name : TextView
+        ~ tv_role : TextView
+        ~ tv_school_id : TextView
+        ~ tv_school_name : TextView
+        + menu_show()
+        + my_school()
+        + onContextItemSelected()
+        + onCreateContextMenu()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.example.finalproj_beta2 {
+    class com.example.finalproj_beta2.my_school {
+        ~ codes_tv : TextView
+        ~ get_school_id : String
+        ~ get_school_name : String
+        ~ get_school_secret : String
+        ~ name_tv : TextView
+        ~ tabLayout : TabLayout
+        ~ viewPager : ViewPager2
+        + home_screen()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.example.finalproj_beta2 {
+    class com.example.finalproj_beta2.request_print {
+        + done()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.example.finalproj_beta2 {
+    class com.example.finalproj_beta2.settings_page {
+        ~ amount : String
+        ~ annotation : boolean
+        ~ annotation_spinner : Spinner
+        ~ annotations : String[]
+        ~ color : boolean
+        ~ color_spinner : Spinner
+        ~ colors : String[]
+        ~ copies_et : EditText
+        ~ date_picker : Button
+        ~ get_school_id : String
+        ~ image_uri : Uri
+        ~ mAuth : FirebaseAuth
+        ~ obj : DateFormat
+        ~ print_millis : String
+        ~ progressDialog : ProgressDialog
+        ~ requestName : String
+        ~ settings : SharedPreferences
+        ~ side : boolean
+        ~ sides : String[]
+        ~ sides_spinner : Spinner
+        ~ uid : String
+        ~ user : FirebaseUser
+        ~ user_name : String
+        - myDateListener : OnDateSetListener
+        + next_page_btn()
+        + onItemSelected()
+        + onNothingSelected()
+        + print_time_picker()
+        # onCreate()
+        # onCreateDialog()
+    }
+  }
+  
+
+  namespace com.example.finalproj_beta2 {
+    class com.example.finalproj_beta2.settings_page_student {
+        ~ amount : String
+        ~ annotation : boolean
+        ~ annotation_spinner : Spinner
+        ~ annotations : String[]
+        ~ color : boolean
+        ~ color_spinner : Spinner
+        ~ colors : String[]
+        ~ copies_et : EditText
+        ~ cost : double
+        ~ credits : String
+        ~ get_school_id : String
+        ~ image_uri : Uri
+        ~ mAuth : FirebaseAuth
+        ~ page_count : int
+        ~ progressDialog : ProgressDialog
+        ~ requestName : String
+        ~ settings : SharedPreferences
+        ~ side : boolean
+        ~ sides : String[]
+        ~ sides_spinner : Spinner
+        ~ uid : String
+        ~ user : FirebaseUser
+        ~ user_name : String
+        + calculate_cost()
+        + next_page_btn()
+        + onItemSelected()
+        + onNothingSelected()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.example.finalproj_beta2 {
+    class com.example.finalproj_beta2.student_fragment {
+        ~ get_school_id : String
+        ~ mAuth : FirebaseAuth
+        ~ my_uris : ArrayList<String>
+        ~ progressDialog : ProgressDialog
+        ~ remove_btn : Button
+        ~ requestListener : ValueEventListener
+        ~ selected_student_id : String
+        ~ selected_student_name : String
+        ~ settings : SharedPreferences
+        ~ student_info : TextView
+        ~ students : ArrayList<String>
+        ~ students_displays : ArrayList<String>
+        ~ students_lv : ListView
+        ~ uris : ArrayList<String>
+        ~ user : FirebaseUser
+        + onCreate()
+        + onCreateView()
+        + onItemClick()
+        + onPause()
+        + onResume()
+        + onStop()
+        + onViewCreated()
+        + remove_student()
+    }
+  }
+  
+
+  namespace com.example.finalproj_beta2 {
+    class com.example.finalproj_beta2.teacher_fragment {
+        ~ can_edit : Boolean
+        ~ display : String
+        ~ get_school_id : String
+        ~ levels : ArrayList<String>
+        ~ mAuth : FirebaseAuth
+        ~ make_reviewer : Button
+        ~ make_teacher : Button
+        ~ my_uris : ArrayList<String>
+        ~ progressDialog : ProgressDialog
+        ~ remove_btn : Button
+        ~ requestListener : ValueEventListener
+        ~ selected_teacher_id : String
+        ~ selected_teacher_name : String
+        ~ settings : SharedPreferences
+        ~ teacher_info : TextView
+        ~ teachers : ArrayList<String>
+        ~ teachers_displays : ArrayList<String>
+        ~ teachers_lv : ListView
+        ~ uris : ArrayList<String>
+        ~ user : FirebaseUser
+        + make_reviewer()
+        + make_teacher()
+        + onCreate()
+        + onCreateView()
+        + onItemClick()
+        + onPause()
+        + onResume()
+        + onStop()
+        + onViewCreated()
+        + remove_student2()
+    }
+  }
+  
+
+  namespace com.example.finalproj_beta2 {
+    class com.example.finalproj_beta2.teacher_signin {
+        ~ get_school_id : String
+        ~ gmail : String
+        ~ mAuth : FirebaseAuth
+        ~ name : String
+        ~ options : String[]
+        ~ perm : int
+        ~ real_code : String
+        ~ school : String
+        ~ settings : SharedPreferences
+        ~ uid : String
+        ~ user : FirebaseUser
+        + create_user()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.example.finalproj_beta2 {
+    class com.example.finalproj_beta2.upload_file {
+        ~ credits : String
+        ~ dialog : ProgressDialog
+        ~ image_uri : Uri
+        ~ next_page_btn : Button
+        ~ pdfView : PDFView
+        ~ student_or_teacher : String
+        ~ uid : String
+        ~ upload_file_btn : Button
+        ~ user_name : String
+        + next_page_func()
+        + upload_func()
+        # onActivityResult()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.example.finalproj_beta2 {
+    class com.example.finalproj_beta2.view_request {
+        ~ RQID : String
+        ~ accept1 : Button
+        ~ body1 : TextView
+        ~ body1txt : String
+        ~ body2 : TextView
+        ~ body2txt : String
+        ~ decline1 : Button
+        ~ get_school_id : String
+        ~ lvl : String
+        ~ progressDialog : ProgressDialog
+        ~ settings : SharedPreferences
+        ~ title1 : TextView
+        + accept()
+        + decline()
+        # onCreate()
+    }
+  }
+  
+
+  com.example.finalproj_beta2.CostumeAdapter -up-|> android.widget.BaseAdapter
+  com.example.finalproj_beta2.CostumeAdapterUser -up-|> android.widget.BaseAdapter
+  com.example.finalproj_beta2.Student -up-|> com.example.finalproj_beta2.Base_object
+  com.example.finalproj_beta2.Teacher -up-|> com.example.finalproj_beta2.Base_object
+  com.example.finalproj_beta2.create_school -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproj_beta2.first_signin -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproj_beta2.home_screen .up.|> android.view.View.OnCreateContextMenuListener
+  com.example.finalproj_beta2.home_screen .up.|> android.widget.AdapterView.OnItemClickListener
+  com.example.finalproj_beta2.home_screen -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproj_beta2.home_screen o-- com.example.finalproj_beta2.CostumeAdapter : customadp
+  com.example.finalproj_beta2.main_activity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproj_beta2.myViewPagerAdapter -up-|> androidx.viewpager2.adapter.FragmentStateAdapter
+  com.example.finalproj_beta2.my_profile .up.|> android.view.View.OnCreateContextMenuListener
+  com.example.finalproj_beta2.my_profile -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproj_beta2.my_school -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproj_beta2.my_school o-- com.example.finalproj_beta2.myViewPagerAdapter : myViewPagerAdapter
+  com.example.finalproj_beta2.request_print -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproj_beta2.settings_page .up.|> android.widget.AdapterView.OnItemSelectedListener
+  com.example.finalproj_beta2.settings_page -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproj_beta2.settings_page o-- com.example.finalproj_beta2.Request : newRequest
+  com.example.finalproj_beta2.settings_page_student .up.|> android.widget.AdapterView.OnItemSelectedListener
+  com.example.finalproj_beta2.settings_page_student -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproj_beta2.settings_page_student o-- com.example.finalproj_beta2.Student_print : newStudent_print
+  com.example.finalproj_beta2.student_fragment .up.|> android.widget.AdapterView.OnItemClickListener
+  com.example.finalproj_beta2.student_fragment -up-|> androidx.fragment.app.Fragment
+  com.example.finalproj_beta2.student_fragment o-- com.example.finalproj_beta2.CostumeAdapterUser : customadp
+  com.example.finalproj_beta2.teacher_fragment .up.|> android.widget.AdapterView.OnItemClickListener
+  com.example.finalproj_beta2.teacher_fragment -up-|> androidx.fragment.app.Fragment
+  com.example.finalproj_beta2.teacher_fragment o-- com.example.finalproj_beta2.CostumeAdapterUser : customadp
+  com.example.finalproj_beta2.teacher_signin -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproj_beta2.upload_file -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproj_beta2.view_request -up-|> androidx.appcompat.app.AppCompatActivity
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml
