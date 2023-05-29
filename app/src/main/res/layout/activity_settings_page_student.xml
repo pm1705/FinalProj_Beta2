@@ -6,62 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".settings_page_student">
 
-    <Space
-        android:layout_width="0px"
-        android:layout_height="match_parent"
-        android:layout_weight="5" />
-
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="90"
         android:orientation="vertical">
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="10" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="10"
-            android:gravity="center"
-            android:text="Print Settings"
-            android:textSize="24sp" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="10" />
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="10"
-            android:orientation="horizontal">
+            android:layout_height="0px"
+            android:layout_weight="30"
+            android:background="@drawable/settings_edit"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="10" />
 
             <TextView
-                android:id="@+id/textView2"
-                android:layout_width="0px"
-                android:layout_height="match_parent"
-                android:layout_weight="40"
-                android:gravity="center"
-                android:text="Print on"
-                android:textSize="18sp" />
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="10"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:shadowColor="#000000"
+                android:shadowDx="3"
+                android:shadowDy="0"
+                android:shadowRadius="3"
+                android:text="Print Settings"
+                android:textColor="#FFFFFF"
+                android:textSize="34sp"
+                android:textStyle="bold" />
 
-            <Spinner
-                android:id="@+id/sides_spinner"
-                android:layout_width="0px"
-                android:layout_height="match_parent"
-                android:layout_weight="60" />
         </LinearLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="5" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -74,51 +54,20 @@
                 android:layout_width="0px"
                 android:layout_height="match_parent"
                 android:layout_weight="40"
+                android:background="#A4B8EC"
+                android:fontFamily="sans-serif-condensed-medium"
                 android:gravity="center"
                 android:text="Color"
+                android:textColor="#FFF8F8"
                 android:textSize="18sp" />
 
             <Spinner
                 android:id="@+id/color_spinner"
                 android:layout_width="0px"
                 android:layout_height="match_parent"
-                android:layout_weight="60" />
-        </LinearLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="5" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="10"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="0px"
-                android:layout_height="match_parent"
-                android:layout_weight="40"
-                android:gravity="center"
-                android:text="Copies"
-                android:textSize="18sp" />
-
-            <EditText
-                android:id="@+id/copies_et"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
                 android:layout_weight="60"
-                android:ems="10"
-                android:inputType="number" />
-
+                android:background="#A4B8EC" />
         </LinearLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="5" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -130,37 +79,134 @@
                 android:layout_width="0px"
                 android:layout_height="match_parent"
                 android:layout_weight="40"
+                android:background="#A4B8EC"
+                android:fontFamily="sans-serif-condensed-medium"
                 android:gravity="center"
                 android:text="anotation"
+                android:textColor="#FFF8F8"
                 android:textSize="18sp" />
 
             <Spinner
                 android:id="@+id/annotation_spinner"
                 android:layout_width="0px"
                 android:layout_height="match_parent"
-                android:layout_weight="60" />
+                android:layout_weight="60"
+                android:background="#A4B8EC" />
         </LinearLayout>
 
-        <Space
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="5" />
+            android:layout_weight="10"
+            android:orientation="horizontal">
 
-        <Button
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="40"
+                android:background="#A4B8EC"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:gravity="center"
+                android:text="Print on"
+                android:textColor="#FFF8F8"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/sides_spinner"
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="60"
+                android:background="#A4B8EC" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0px"
-            android:layout_weight="10"
-            android:onClick="next_page_btn"
-            android:text="next" />
+            android:layout_weight="50"
+            android:orientation="horizontal">
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="10" />
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="10" />
+
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="80"
+                android:orientation="vertical">
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="5" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="10"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight="40"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:gravity="center"
+                        android:text="Copies"
+                        android:textColor="#737373"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/school_name_et"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="60"
+                        android:ems="10"
+                        android:inputType="number"
+                        android:textColor="@color/blue_text_urgent" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="15" />
+
+                <Button
+                    android:id="@+id/log_out"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="10"
+                    android:gravity="center|start"
+                    android:onClick="next_page_btn"
+                    android:text="UPLOAD PDF"
+                    android:textColor="#535353"
+                    android:textSize="18sp"
+                    app:backgroundTint="#E2E2E3"
+                    app:icon="@drawable/next"
+                    app:iconGravity="end"
+                    app:iconSize="25dp"
+                    app:iconTint="#535353"
+                    app:strokeColor="#FF535353"
+                    app:strokeWidth="3px" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="15" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="10" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
-    <Space
-        android:layout_width="0px"
-        android:layout_height="match_parent"
-        android:layout_weight="5" />
 </LinearLayout>

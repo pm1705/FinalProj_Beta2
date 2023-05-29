@@ -6,73 +6,137 @@
     android:layout_height="match_parent"
     tools:context=".create_school">
 
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="5" />
-
     <LinearLayout
-        android:layout_width="0px"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="90"
         android:orientation="vertical">
 
-        <Space
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0px"
-            android:layout_weight="5" />
+            android:layout_weight="30"
+            android:background="@drawable/create_school_edit"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView9"
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="10" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="10"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:shadowColor="#000000"
+                android:shadowDx="3"
+                android:shadowDy="0"
+                android:shadowRadius="3"
+                android:text="Create A New School"
+                android:textColor="#FFFFFF"
+                android:textSize="34sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="5"
-            android:gravity="center"
-            android:text="Create a new school"
-            android:textSize="30sp" />
+            android:layout_weight="10"
+            android:background="@color/banner_background"
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/school_name_et"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="5"
-            android:ems="10"
-            android:hint="School name"
-            android:inputType="textPersonName" />
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="40"
+                android:background="#A4B8EC"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:gravity="center"
+                android:text="School Name"
+                android:textColor="#FFF8F8"
+                android:textSize="18sp" />
 
-        <Space
+            <EditText
+                android:id="@+id/school_name_et"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="60"
+                android:background="@color/banner_background"
+                android:ems="10"
+                android:inputType="text"
+                android:textColor="@color/white"
+                android:textColorHighlight="@color/white"
+                android:textColorHint="@color/white"
+                android:textColorLink="@color/white" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@color/banner_background" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0px"
-            android:layout_weight="5" />
+            android:layout_weight="70"
+            android:orientation="horizontal">
 
-        <Spinner
-            android:id="@+id/spn"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="5" />
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="10" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="25" />
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="80"
+                android:orientation="vertical">
 
-        <Button
-            android:id="@+id/button8"
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="5"
-            android:onClick="create_school"
-            android:text="Create School" />
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="52" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="5" />
+                <Button
+                    android:id="@+id/log_out"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="10"
+                    android:gravity="center|start"
+                    android:onClick="create_school"
+                    android:text="Create School"
+                    android:textColor="#535353"
+                    android:textSize="18sp"
+                    app:backgroundTint="#E2E2E3"
+                    app:icon="@drawable/teacher"
+                    app:iconGravity="end"
+                    app:iconSize="30dp"
+                    app:iconTint="#535353"
+                    app:strokeColor="#FF535353"
+                    app:strokeWidth="3px" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="15" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="10" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="5" />
 </LinearLayout>

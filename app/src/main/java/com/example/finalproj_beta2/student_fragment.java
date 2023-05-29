@@ -1,5 +1,6 @@
 package com.example.finalproj_beta2;
 
+import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -29,29 +30,26 @@ import static java.lang.Long.parseLong;
 
 public class student_fragment extends Fragment implements AdapterView.OnItemClickListener{
 
+    /**
+     * @author		Paz Malul <malul.paz@gmail.com>
+
+     * the student fragment of the my_school activity.
+     */
 
     ListView students_lv;
-
     ArrayList<String> students, students_displays;
-
-    CostumeAdapter customadp;
-
-    Long current_millis;
+    CostumeAdapterUser customadp;
     String get_school_id;
     SharedPreferences settings;
-
     ArrayList<String> my_uris;
     ArrayList<String> uris;
-
     FirebaseAuth mAuth;
     FirebaseUser user;
-
     ValueEventListener requestListener;
-
-    String selected_student_id, selected_student_name = "";
-
+    String selected_student_id = "", selected_student_name = "";
     TextView student_info;
     Button remove_btn;
+    ProgressDialog progressDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -95,6 +93,12 @@ public class student_fragment extends Fragment implements AdapterView.OnItemClic
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
 
+        progressDialog = new ProgressDialog(getContext());
+        progressDialog.setTitle("Loading");
+        progressDialog.setMessage("Loading Information...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
         requestListener = new ValueEventListener() {
 
             @Override
@@ -104,7 +108,6 @@ public class student_fragment extends Fragment implements AdapterView.OnItemClic
                 uris.clear();
                 for(DataSnapshot data : dS.getChildren()) {
                     students.add(data.getKey());
-                    System.out.println("thissss + " + data.child(NAME).getValue());
                     students_displays.add("" + data.child(NAME).getValue().toString());
                     uris.add(data.child("image_url").getValue().toString());
                 }
@@ -113,9 +116,10 @@ public class student_fragment extends Fragment implements AdapterView.OnItemClic
                     selected_student_name = students_displays.get(0);
                     student_info.setText(selected_student_name);
                 }
-                customadp = new CostumeAdapter(getActivity().getApplicationContext(),
+                customadp = new CostumeAdapterUser(getActivity().getApplicationContext(),
                         students_displays, uris);
                 students_lv.setAdapter(customadp);
+                progressDialog.dismiss();
             }
 
             @Override
@@ -127,6 +131,7 @@ public class student_fragment extends Fragment implements AdapterView.OnItemClic
         refSchools.child(get_school_id).child("users").child("students").addValueEventListener(requestListener);
     }
 
+    // When item is clicked change the selected... variables to help remove the student.
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         selected_student_id = students.get(position);
@@ -136,13 +141,25 @@ public class student_fragment extends Fragment implements AdapterView.OnItemClic
 
     public void onPause() {
         super.onPause();
-//        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         refSchools.child(get_school_id).child("users").child("students").removeEventListener(requestListener);
     }
 
+    public void onStop() {
+        super.onStop();
+        refSchools.child(get_school_id).child("users").child("students").removeEventListener(requestListener);
+    }
+
+    public void onResume() {
+        super.onResume();
+        refSchools.child(get_school_id).child("users").child("students").addValueEventListener(requestListener);
+    }
+
+    // Remove selected teacher from the school
     public void remove_student(View view){
         if (!selected_student_id.equals("")){
             refSchools.child(get_school_id).child("users").child("students").child(selected_student_id).removeValue();
+            selected_student_name = "";
+            selected_student_id = "";
         }
     }
 }

@@ -1,6 +1,13 @@
 package com.example.finalproj_beta2;
 
 public class Teacher extends Base_object{
+
+    /**
+     * @author		Paz Malul <malul.paz@gmail.com>
+
+     * the teacher class helps organize information about the teacher
+     */
+
     public static final String ACTIVE = "active";
     public static final String GMAIL = "gmail";
     public static final String LEVEL = "level";

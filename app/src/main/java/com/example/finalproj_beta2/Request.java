@@ -1,8 +1,14 @@
 package com.example.finalproj_beta2;
 
 public class Request {
+
+    /**
+     * @author		Paz Malul <malul.paz@gmail.com>
+
+     * the Request class to organize the information about a teacher's request.
+     */
+
     public static final String APPROVED = "approved";
-    public static final String PENDING = "pending";
     public static final String RELEVANT = "relevant";
     public static final String COPIES = "copies";
     public static final String COLORFUL = "colorful";
@@ -15,7 +21,6 @@ public class Request {
     public static final String USER_NAME = "user_name";
 
     boolean approved;
-    boolean pending;
     boolean relevant;
     int copies;
     boolean colorful;

@@ -5,23 +5,28 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.TextView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
-import com.google.firebase.auth.FirebaseAuth;
 
-public class My_school extends AppCompatActivity {
+public class my_school extends AppCompatActivity {
 
-    String get_school_id;
 
+
+    /**
+     * @author		Paz Malul <malul.paz@gmail.com>
+
+     * In this activity an ADMIN can view the students, teachers in his school.
+     * He can remove any one of them and promote/demote any teacher.
+     * He can Also view the SCHOOL_ID and SCHOOL_SECRET codes.
+     */
+
+    String get_school_id, get_school_secret, get_school_name;
     TabLayout tabLayout;
     ViewPager2 viewPager;
     myViewPagerAdapter myViewPagerAdapter;
+    TextView name_tv,codes_tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +37,9 @@ public class My_school extends AppCompatActivity {
         viewPager = findViewById(R.id.view_pager);
         myViewPagerAdapter = new myViewPagerAdapter(this);
         viewPager.setAdapter(myViewPagerAdapter);
+
+        name_tv = findViewById(R.id.name);
+        codes_tv = findViewById(R.id.codes);
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -59,26 +67,16 @@ public class My_school extends AppCompatActivity {
         });
 
                                                Intent intent = getIntent();
+
         get_school_id = intent.getStringExtra("school_id");
+        get_school_secret = intent.getStringExtra("school_secret");
+        get_school_name = intent.getStringExtra("school_name");
+        name_tv.setText("School name: " + get_school_name);
+        codes_tv.setText("School code: " + get_school_id + ", School secret: " + get_school_secret);
     }
 
+    // this transfers the user back to the profile activity.
     public void home_screen(View view) {
-        Intent intent = new Intent(this, home_screen.class);
-        startActivity(intent);
-    }
-
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.home, menu);
-        return true;
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item){
-        int id = item.getItemId();
-
-        if (id == R.id.home){
-            finish();
-        }
-
-        return true;
+        finish();
     }
 }

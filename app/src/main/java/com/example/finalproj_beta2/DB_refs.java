@@ -7,6 +7,13 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 public class DB_refs {
+
+    /**
+     * @author		Paz Malul <malul.paz@gmail.com>
+
+     * references to the database
+     */
+
     public static FirebaseAuth refAuth=FirebaseAuth.getInstance();
 
     public static StorageReference storageReference = FirebaseStorage.getInstance().getReference();

@@ -24,13 +24,17 @@ import static com.example.finalproj_beta2.Teacher.NAME;
 
 public class create_school extends AppCompatActivity{
 
-    private Spinner spinner;
+    /**
+     * @author		Paz Malul <malul.paz@gmail.com>
+
+     * Create a new school and make the creating user the Admin of the school
+     */
+
     String get_school_id, last_school_id, new_school_id;
     SharedPreferences settings;
     EditText school_name;
     String secret_code;
     String name,email,uid,url;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,13 +47,14 @@ public class create_school extends AppCompatActivity{
         uid = get.getStringExtra("uid");
         url = get.getStringExtra("url");
 
-
         school_name = findViewById(R.id.school_name_et);
 
         settings = getSharedPreferences("login_info",MODE_PRIVATE);
         get_school_id = settings.getString("school_id", "999999");
     }
 
+    // Generate a new school ID that is following the last created id,
+    // then create the school in the db.
     public void generate_school_id(){
 
         Query school_ids = refSchools.orderByKey().limitToLast(1);
@@ -61,7 +66,6 @@ public class create_school extends AppCompatActivity{
                 for (DataSnapshot data : snapshot.getChildren()) {
                     last_school_id = data.getKey();
                 }
-                System.out.println(last_school_id);
                 new_school_id = String.valueOf(Integer.parseInt(last_school_id) + 1);
                 refSchools.child(new_school_id).child("requests").setValue("");
                 refSchools.child(new_school_id).child("student_prints").setValue("");
@@ -73,6 +77,9 @@ public class create_school extends AppCompatActivity{
                 refSchools.child(new_school_id).child("users").child("teachers").child(uid).setValue(newTeacher);
                 refSchools.child(new_school_id).child("users").child("teachers").child(uid).child("image_url").setValue(url);
 
+                SharedPreferences.Editor editor=settings.edit();
+                editor.putString("school_id",new_school_id);
+                editor.commit();
                 refSchools.child(new_school_id).child("secret_code").setValue(secret_code);
                 Toast.makeText(create_school.this,"School created", Toast.LENGTH_SHORT).show();
                 finish();
@@ -86,7 +93,14 @@ public class create_school extends AppCompatActivity{
 
     }
 
+    // Make sure all inputs are valid.
     public void create_school(View view) {
-        generate_school_id();
+
+        if (!school_name.getText().toString().equals("")){
+            generate_school_id();
+        }
+        else{
+            Toast.makeText(this, "Invalid School name.", Toast.LENGTH_SHORT).show();
+        }
     }
 }

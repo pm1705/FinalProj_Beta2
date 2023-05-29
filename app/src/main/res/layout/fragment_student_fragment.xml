@@ -1,77 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".student_fragment">
 
     <!-- TODO: Update blank fragment layout -->
 
-    <Space
-        android:layout_width="0px"
-        android:layout_height="wrap_content"
-        android:layout_weight="4" />
-
     <LinearLayout
-        android:layout_width="0px"
-        android:layout_height="match_parent"
-        android:layout_weight="90"
-        android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="65">
 
         <Space
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="5" />
-
-        <ListView
-            android:id="@+id/stu_list"
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="90" >
-
-        </ListView>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="5" />
-
-        <TextView
-            android:id="@+id/student_info"
-            android:layout_width="wrap_content"
+            android:layout_width="0px"
             android:layout_height="wrap_content"
-            android:text="TextView" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0px"
             android:layout_weight="5" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="10"
-            android:orientation="horizontal">
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="90"
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/remove_btn2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Remove_student" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="5" />
+
+            <ListView
+                android:id="@+id/stu_list"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="65">
+
+            </ListView>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="5" />
 
         </LinearLayout>
 
         <Space
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="5" />
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="4" />
 
     </LinearLayout>
 
-    <Space
-        android:layout_width="0px"
-        android:layout_height="wrap_content"
-        android:layout_weight="5" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="15"
+        android:background="@color/banner_background"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/student_info"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="5"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:gravity="center_vertical"
+            android:text="Choose a Teacher"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/remove_btn2"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="5"
+            android:text="Remove_student"
+            android:textColor="@color/button_border"
+            app:backgroundTint="@color/button_background"
+            app:iconTint="@color/button_border"
+            app:strokeColor="@color/button_border"
+            app:strokeWidth="3px" />
+
+    </LinearLayout>
 
 </LinearLayout>

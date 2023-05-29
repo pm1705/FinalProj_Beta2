@@ -4,90 +4,134 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".view_request">
 
-    <Space
-        android:layout_width="0px"
-        android:layout_height="match_parent"
-        android:layout_weight="5" />
-
     <LinearLayout
-        android:layout_width="0px"
-        android:layout_height="match_parent"
-        android:layout_weight="90"
-        android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="50"
+        android:orientation="horizontal">
 
         <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="5" />
-
-        <TextView
-            android:id="@+id/title1"
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="5"
-            android:text="TextView"
-            android:textSize="30sp" />
-
-        <TextView
-            android:id="@+id/body1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="5"
-            android:text="TextView"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/body2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="5"
-            android:text="TextView"
-            android:textSize="18sp" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0px"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
             android:layout_weight="5" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="5"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/decline_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:onClick="decline"
-                android:text="DECLINE" />
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="90"
+            android:orientation="vertical">
 
             <Space
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5" />
 
-            <Button
-                android:id="@+id/accept_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:onClick="accept"
-                android:text="ACCEPT" />
+            <TextView
+                android:id="@+id/title1"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="5"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="TextView"
+                android:textColor="#000000"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/body1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="TextView"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/body2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="TextView"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="5" />
+
         </LinearLayout>
 
         <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
             android:layout_weight="5" />
 
     </LinearLayout>
 
-    <Space
-        android:layout_width="0px"
-        android:layout_height="match_parent"
-        android:layout_weight="5" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="50"
+        android:background="@color/banner_background">
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="10" />
+
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="80"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="3" />
+
+            <Button
+                android:id="@+id/accept_btn"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:onClick="accept"
+                android:text="ACCEPT"
+                android:textColor="@color/button_border"
+                app:backgroundTint="@color/button_background"
+                app:iconTint="@color/button_border"
+                app:strokeColor="@color/button_border"
+                app:strokeWidth="3px" />
+
+            <Button
+                android:id="@+id/decline_btn"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:onClick="decline"
+                android:text="DECLINE"
+                android:textColor="@color/button_border"
+                app:backgroundTint="@color/button_background"
+                app:iconTint="@color/button_border"
+                app:strokeColor="@color/button_border"
+                app:strokeWidth="3px" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="10" />
+
+    </LinearLayout>
+
 </LinearLayout>

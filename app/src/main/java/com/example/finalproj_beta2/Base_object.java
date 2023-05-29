@@ -1,6 +1,16 @@
 package com.example.finalproj_beta2;
 
+
+
+
 abstract public class Base_object {
+
+    /**
+    * @author		Paz Malul <malul.paz@gmail.com>
+
+    * base object - abstract
+    */
+
     private String name;
     private String school;
     private Boolean active;

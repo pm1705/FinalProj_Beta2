@@ -1,5 +1,6 @@
 package com.example.finalproj_beta2;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -41,31 +42,28 @@ import static java.lang.Long.parseLong;
 
 public class teacher_fragment extends Fragment implements AdapterView.OnItemClickListener{
 
+    /**
+     * @author		Paz Malul <malul.paz@gmail.com>
+
+     * the teacher fragment of the my_school activity.
+     */
 
     ListView teachers_lv;
-
-    ArrayList<String> teachers, teachers_displays;
-
-    CostumeAdapter customadp;
-
-    Long current_millis;
+    ArrayList<String> teachers, teachers_displays, levels;
+    Boolean can_edit = true;
+    CostumeAdapterUser customadp;
     String get_school_id;
     SharedPreferences settings;
-
     ArrayList<String> my_uris;
     ArrayList<String> uris;
-
     FirebaseAuth mAuth;
     FirebaseUser user;
-
     ValueEventListener requestListener;
-
     String display;
-
     String selected_teacher_id, selected_teacher_name = "";
-
     TextView teacher_info;
-    Button remove_btn, make_teacher, make_approver, make_admin;
+    Button remove_btn, make_teacher, make_reviewer;
+    ProgressDialog progressDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -90,8 +88,7 @@ public class teacher_fragment extends Fragment implements AdapterView.OnItemClic
         teacher_info = getView().findViewById(R.id.teacher_info);
         remove_btn = getView().findViewById(R.id.remove_btn2);
         make_teacher = getView().findViewById(R.id.make_teacher);
-        make_approver = getView().findViewById(R.id.make_approver);
-        make_admin = getView().findViewById(R.id.make_admin);
+        make_reviewer = getView().findViewById(R.id.make_reviewer);
 
         remove_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,22 +104,23 @@ public class teacher_fragment extends Fragment implements AdapterView.OnItemClic
             }
         });
 
-        make_approver.setOnClickListener(new View.OnClickListener() {
+        make_reviewer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                make_approver(v);
+                make_reviewer(v);
             }
         });
 
-        make_admin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                make_admin(v);
-            }
-        });
+//        make_admin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                make_admin(v);
+//            }
+//        });
 
         teachers = new ArrayList<String>();
         teachers_displays = new ArrayList<String>();
+        levels = new ArrayList<String>();
 
         uris = new ArrayList<String>();
         my_uris = new ArrayList<String>();
@@ -133,6 +131,15 @@ public class teacher_fragment extends Fragment implements AdapterView.OnItemClic
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
 
+        selected_teacher_id = "";
+        selected_teacher_name = "";
+
+        progressDialog = new ProgressDialog(getContext());
+        progressDialog.setTitle("Loading");
+        progressDialog.setMessage("Loading Information...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
         requestListener = new ValueEventListener() {
 
             @Override
@@ -140,14 +147,16 @@ public class teacher_fragment extends Fragment implements AdapterView.OnItemClic
                 teachers.clear();
                 teachers_displays.clear();
                 uris.clear();
+                levels.clear();
                 for(DataSnapshot data : dS.getChildren()) {
                     teachers.add(data.getKey());
-                    display = "" + data.child(NAME).getValue().toString() + " , ";
+                    display = "" + data.child(NAME).getValue().toString() + " - ";
+                    levels.add(data.child(LEVEL).getValue().toString());
                     if (data.child(LEVEL).getValue().toString().equals("2")){
                         display += "Teacher";
                     }
                     if (data.child(LEVEL).getValue().toString().equals("1")){
-                        display += "Approver";
+                        display += "Reviewer";
                     }
                     if (data.child(LEVEL).getValue().toString().equals("0")){
                         display += "Admin";
@@ -155,9 +164,12 @@ public class teacher_fragment extends Fragment implements AdapterView.OnItemClic
                     teachers_displays.add(display);
                     uris.add(data.child("image_url").getValue().toString());
                 }
-                customadp = new CostumeAdapter(getActivity().getApplicationContext(),
+                customadp = new CostumeAdapterUser(getActivity().getApplicationContext(),
                         teachers_displays, uris);
                 teachers_lv.setAdapter(customadp);
+
+                progressDialog.dismiss();
+
             }
 
             @Override
@@ -167,43 +179,71 @@ public class teacher_fragment extends Fragment implements AdapterView.OnItemClic
         };
 
         refSchools.child(get_school_id).child("users").child("teachers").addValueEventListener(requestListener);
-        // Inflate the layout for this fragment
     }
 
+    // When item is clicked change the selected... variables to help promote/demote/remove the teacher.
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         selected_teacher_id = teachers.get(position);
         selected_teacher_name = teachers_displays.get(position);
+        can_edit = !levels.get(position).equals("0");
         teacher_info.setText(selected_teacher_name);
     }
 
     public void onPause() {
         super.onPause();
-//        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         refSchools.child(get_school_id).child("users").child("teachers").removeEventListener(requestListener);
     }
 
+    public void onStop() {
+        super.onStop();
+        refSchools.child(get_school_id).child("users").child("teachers").removeEventListener(requestListener);
+    }
+
+    public void onResume() {
+        super.onResume();
+        refSchools.child(get_school_id).child("users").child("teachers").addValueEventListener(requestListener);
+    }
+
+    // Remove selected teacher from the school
     public void remove_student2(View view){
         if (!selected_teacher_id.equals("")){
-            refSchools.child(get_school_id).child("users").child("teachers").child(selected_teacher_id).removeValue();
+            if (can_edit){
+                refSchools.child(get_school_id).child("users").child("teachers").child(selected_teacher_id).removeValue();
+                selected_teacher_name = "";
+                selected_teacher_id = "";
+            }
+            else{
+                Toast.makeText(getContext(), "Can not edit ADMIN.", Toast.LENGTH_SHORT).show();
+
+            }
         }
     }
 
+    // Demote selected teacher to teacher
     public void make_teacher(View view){
         if (!selected_teacher_id.equals("")){
-            refSchools.child(get_school_id).child("users").child("teachers").child(selected_teacher_id).child(LEVEL).setValue(2);
-        }
+            if (can_edit){
+                refSchools.child(get_school_id).child("users").child("teachers").child(selected_teacher_id).child(LEVEL).setValue(2);
+
+            }
+            else{
+                Toast.makeText(getContext(), "Can not edit ADMIN.", Toast.LENGTH_SHORT).show();
+
+            }        }
     }
 
-    public void make_approver(View view){
+    // Promote selected teacher to Reviewer
+    public void make_reviewer(View view){
         if (!selected_teacher_id.equals("")){
-            refSchools.child(get_school_id).child("users").child("teachers").child(selected_teacher_id).child(LEVEL).setValue(1);
-        }
-    }
+            if (can_edit){
+                refSchools.child(get_school_id).child("users").child("teachers").child(selected_teacher_id).child(LEVEL).setValue(1);
 
-    public void make_admin(View view){
-        if (!selected_teacher_id.equals("")){
-            refSchools.child(get_school_id).child("users").child("teachers").child(selected_teacher_id).child(LEVEL).setValue(0);
+            }
+            else{
+                Toast.makeText(getContext(), "Can not edit ADMIN.", Toast.LENGTH_SHORT).show();
+
+            }
         }
     }
 }

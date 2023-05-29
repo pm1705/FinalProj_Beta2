@@ -36,19 +36,24 @@ import static java.security.AccessController.getContext;
 
 public class teacher_signin extends AppCompatActivity {
 
+
+
+    /**
+     * @author		Paz Malul <malul.paz@gmail.com>
+
+     * Get more input from the signed up teacher and send him to home screen.
+     */
+
     String name;
     String school;
     String gmail;
     String uid;
     int perm = 2;
-
     FirebaseAuth mAuth;
     FirebaseUser user;
-
-    String[] options = new String[]{"Teacher", "Admin"};
+    String[] options = new String[]{"Teacher", "Reviewer"};
     SharedPreferences settings;
     String get_school_id;
-
     String real_code;
 
     @Override
@@ -91,7 +96,7 @@ public class teacher_signin extends AppCompatActivity {
 
                 if (selectedItem.equals("Teacher")) {
                     perm = 2;
-                } else if (selectedItem.equals("Admin")) {
+                } else if (selectedItem.equals("Reviewer")) {
                     perm = 1;
                 }
             }
@@ -105,12 +110,15 @@ public class teacher_signin extends AppCompatActivity {
         settings = getSharedPreferences("login_info",MODE_PRIVATE);
     }
 
+    // If the teacher wishes to be a Reviewer he has to enter a secret code known to the admin
+    // If he enters correctly he will be signed up as a reviewer.
+    // Else he can sign up with no secret code.
     public void create_user(View view) {
 
         if (perm == 1){
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("admin code");
-            builder.setMessage("enter code to become admin: ");
+            builder.setMessage("enter code to become a Reviewer: ");
             final EditText secretCode = new EditText(this);
 
             secretCode.setHint("Secret code");
@@ -122,16 +130,17 @@ public class teacher_signin extends AppCompatActivity {
                 public void onClick(DialogInterface dialog, int which) {
                     String code = secretCode.getText().toString();
                     if (code.equals(real_code)){
-                        System.out.println("IN CODE GOOD");
                         Teacher newTeacher = new Teacher(name, school, gmail, perm);
                         get_school_id = settings.getString("school_id", "999999");
                         refSchools.child(get_school_id).child("users").child("teachers").child(uid).setValue(newTeacher);
                         refSchools.child(get_school_id).child("users").child("teachers").child(uid).child("image_url").setValue(user.getPhotoUrl().toString());
                         Intent intent = new Intent(getApplicationContext(), home_screen.class);
+                        SharedPreferences.Editor editor=settings.edit();
+                        editor.putString("teacher_or_student","teacher");
+                        editor.commit();
                         startActivity(intent);
                     }
                     else{
-                        System.out.println("IN CODE BAD");
                         Toast.makeText(getApplicationContext(),"Wrong code",Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -154,6 +163,9 @@ public class teacher_signin extends AppCompatActivity {
             refSchools.child(get_school_id).child("users").child("teachers").child(uid).setValue(newTeacher);
             refSchools.child(get_school_id).child("users").child("teachers").child(uid).child("image_url").setValue(user.getPhotoUrl().toString());
             Intent intent = new Intent(this, home_screen.class);
+            SharedPreferences.Editor editor=settings.edit();
+            editor.putString("teacher_or_student","teacher");
+            editor.commit();
             startActivity(intent);
         }
     }

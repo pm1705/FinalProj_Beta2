@@ -6,6 +6,12 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 public class myViewPagerAdapter extends FragmentStateAdapter {
 
+    /**
+     * @author		Paz Malul <malul.paz@gmail.com>
+
+     * an adapter to help expand the fragments in "my_school" activity.
+     */
+
     public myViewPagerAdapter(FragmentActivity fragmentActivity) {
         super(fragmentActivity);
     }

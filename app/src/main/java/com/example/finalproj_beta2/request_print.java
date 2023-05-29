@@ -8,6 +8,12 @@ import android.view.View;
 
 public class request_print extends AppCompatActivity {
 
+    /**
+     * @author		Paz Malul <malul.paz@gmail.com>
+
+     * a validation message that the request was successfully sent.
+     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,6 +22,7 @@ public class request_print extends AppCompatActivity {
 
     public void done(View view) {
         Intent intent = new Intent(this, home_screen.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 }

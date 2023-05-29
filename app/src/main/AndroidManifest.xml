@@ -4,26 +4,26 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo1"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/logo1"
         android:supportsRtl="true"
-        android:theme="@style/Theme.FinalProj_Beta2">
-        <activity android:name=".My_school"></activity>
-        <activity android:name=".confirm_student_print" />
+        android:theme="@style/Theme.NoBar">
+        <activity
+            android:name=".my_profile"
+            android:exported="false" />
+        <activity android:name=".my_school" />
         <activity android:name=".settings_page_student" />
-        <activity android:name=".home_screen_student" />
         <activity android:name=".request_print" />
         <activity android:name=".first_signin" />
         <activity android:name=".view_request" />
-        <activity android:name=".pending_requests" />
-        <activity android:name=".success_request" />
         <activity android:name=".settings_page" />
         <activity android:name=".upload_file" />
         <activity android:name=".home_screen" />
         <activity android:name=".create_school" />
         <activity android:name=".teacher_signin" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".main_activity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

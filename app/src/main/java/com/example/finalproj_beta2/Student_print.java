@@ -1,14 +1,23 @@
 package com.example.finalproj_beta2;
 
 public class Student_print {
+
+    /**
+     * @author		Paz Malul <malul.paz@gmail.com>
+
+     * The student_print class helps organize student request's information
+     */
+
     public static final String COPIES = "copies";
     public static final String COLORFUL = "colorful";
     public static final String VERTICAL = "vertical";
+    public static final String PRINTED = "printed";
     public static final String DOUBLE_SIDED = "double_sided";
     public static final String FILE_ID = "file_id";
     public static final String USER_ID = "user_id";
     public static final String DATE_REQUESTED = "date_requested";
     public static final String USER_NAME = "user_name";
+    public static final String COST = "cost";
 
     boolean printed;
     int copies;
@@ -19,8 +28,9 @@ public class Student_print {
     String user_id;
     String date_requested;
     String user_name;
+    String cost;
 
-    public Student_print(boolean printed, int copies, boolean colorful, boolean vertical, boolean double_sided, String file_id, String user_id, String date_requested, String user_name) {
+    public Student_print(boolean printed, int copies, boolean colorful, boolean vertical, boolean double_sided, String file_id, String user_id, String date_requested, String user_name, String cost) {
         this.printed = printed;
         this.copies = copies;
         this.colorful = colorful;
@@ -30,6 +40,7 @@ public class Student_print {
         this.user_id = user_id;
         this.date_requested = date_requested;
         this.user_name = user_name;
+        this.cost = cost;
     }
 
     public static String getCOPIES() {
@@ -134,6 +145,14 @@ public class Student_print {
 
     public void setUser_name(String user_name) {
         this.user_name = user_name;
+    }
+
+    public String getCost() {
+        return this.cost;
+    }
+
+    public void setCost(String cost) {
+        this.cost = cost;
     }
 
 

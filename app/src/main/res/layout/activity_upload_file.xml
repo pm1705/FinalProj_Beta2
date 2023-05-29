@@ -5,101 +5,124 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
+    android:orientation="vertical"
     tools:context=".upload_file">
 
-    <Space
-        android:layout_width="0px"
-        android:layout_height="match_parent"
-        android:layout_weight="5" />
+    <com.github.barteksc.pdfviewer.PDFView
+        android:id="@+id/pdfView"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="70">
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_alignParentTop="false"
+            android:layout_alignParentBottom="true"
+            android:background="@color/black" />
+
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="3dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:background="@color/black" />
+
+        <View
+            android:id="@+id/divider4"
+            android:layout_width="3dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentRight="true"
+            android:background="@color/black" />
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="false"
+            android:layout_centerHorizontal="false"
+            android:background="@color/black" />
+    </com.github.barteksc.pdfviewer.PDFView>
 
     <LinearLayout
-        android:layout_width="0px"
-        android:layout_height="match_parent"
-        android:layout_weight="80"
-        android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="30"
+        android:background="#A4B8EC"
+        android:orientation="horizontal">
 
         <Space
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="10" />
-
-        <com.github.barteksc.pdfviewer.PDFView
-            android:id="@+id/pdfView"
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="70">
-
-            <View
-                android:id="@+id/divider"
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:layout_alignParentTop="false"
-                android:layout_alignParentBottom="true"
-                android:background="@color/black" />
-
-            <View
-                android:id="@+id/divider3"
-                android:layout_width="3dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentLeft="true"
-                android:background="@color/black" />
-
-            <View
-                android:id="@+id/divider4"
-                android:layout_width="3dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentLeft="false"
-                android:layout_alignParentRight="true"
-                android:background="@color/black" />
-
-            <View
-                android:id="@+id/divider2"
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentBottom="false"
-                android:layout_centerHorizontal="false"
-                android:background="@color/black" />
-        </com.github.barteksc.pdfviewer.PDFView>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="10" />
-
-        <Button
-            android:id="@+id/upload_file_btn"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="10"
-            android:onClick="upload_func"
-            android:text="UPLOAD PDF"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/upload_status"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textSize="18sp" />
+            android:layout_weight="10" />
 
-        <Button
-            android:id="@+id/next_page"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="10"
-            android:onClick="next_page_func"
-            android:text="Next"
-            android:textSize="18sp" />
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="80"
+            android:background="#A4B8EC"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5" />
+
+            <Button
+                android:id="@+id/upload_file_btn"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="10"
+                android:gravity="center"
+                android:onClick="upload_func"
+                android:text="UPLOAD PDF"
+                android:textColor="#535353"
+                android:textSize="18sp"
+                app:backgroundTint="#E2E2E3"
+                app:icon="@drawable/upload"
+                app:iconGravity="textStart"
+                app:iconSize="25dp"
+                app:iconTint="#393939"
+                app:strokeColor="#FF535353"
+                app:strokeWidth="3px" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5" />
+
+            <Button
+                android:id="@+id/next_page"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="10"
+                android:gravity="center"
+                android:onClick="next_page_func"
+                android:text="Next"
+                android:textColor="#535353"
+                android:textSize="18sp"
+                app:backgroundTint="#E2E2E3"
+                app:icon="@drawable/next"
+                app:iconGravity="textStart"
+                app:iconPadding="20dp"
+                app:iconSize="20dp"
+                app:iconTint="#535353"
+                app:strokeColor="#FF535353"
+                app:strokeWidth="3px" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="15" />
+        </LinearLayout>
 
         <Space
-            android:layout_width="match_parent"
-            android:layout_height="0px"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="10" />
     </LinearLayout>
 
-    <Space
-        android:layout_width="0px"
-        android:layout_height="match_parent"
-        android:layout_weight="5" />
 </LinearLayout>

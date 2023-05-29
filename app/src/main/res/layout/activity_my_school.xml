@@ -11,7 +11,10 @@
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:clickable="true">
+        android:clickable="true"
+        app:tabBackground="@color/button_background"
+        app:tabIndicatorColor="@color/button_border"
+        app:tabTextColor="@color/button_border">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
@@ -27,11 +30,6 @@
 
     </com.google.android.material.tabs.TabLayout>
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0px"
-        android:layout_weight="1" />
-
     <view
         android:id="@+id/view_pager"
         class="androidx.viewpager2.widget.ViewPager2"
@@ -39,9 +37,51 @@
         android:layout_height="0px"
         android:layout_weight="10" />
 
-    <Space
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0px"
-        android:layout_weight="1" />
+        android:layout_weight="3"
+        android:background="@color/banner_background"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:gravity="center_vertical"
+            android:text="TextView"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/codes"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:gravity="center_vertical"
+            android:text="TextView"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:onClick="home_screen"
+            android:text="Back"
+            android:textColor="@color/button_border"
+            app:backgroundTint="@color/button_background"
+            app:iconTint="@color/button_border"
+            app:strokeColor="@color/button_border"
+            app:strokeWidth="3px" />
+    </LinearLayout>
 
 </LinearLayout>
